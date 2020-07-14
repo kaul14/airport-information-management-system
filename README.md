@@ -49,7 +49,7 @@ you will see something like This
 Performing system checks...
 
 System check identified no issues (0 silenced).
-June 07, 2018 - 11:12:23
+July 13, 2020 - 11:12:24
 Django version 1.11.13, using settings 'Project_SLS.settings'
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.

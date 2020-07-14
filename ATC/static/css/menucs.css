@@ -1,0 +1,90 @@
+#AAI{height: 100px;
+width:200px;
+margin-left: -19px;
+margin-top:-20px;
+border:black solid 1px; resize: both;}
+
+
+div.headerr{background:#014296;
+padding: 20px;
+height: 100px;
+margin-top:auto;
+resize: both;}
+
+#log{height: 80px;
+width: 80px;
+margin-left: 1200px;
+margin-top: -100px;
+resize: both;}
+
+
+#welcome{font-style: normal;font-family: 'Cinzel', serif;, cursive;color:white;
+font-weight: bold; text-align: left;
+margin-top:-55px;margin-left: 235px;font-size: 35px;resize: both;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 201px;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;resize: both;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+    resize: both;
+}
+
+li a.active {
+    background-color: #756263;
+    color: white;
+    resize: both;
+}
+
+li a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+    resize: both;
+}
+
+/* Aircraft type */
+
+div.airtype{margin-left: 400px;font-family: 'Arsenal', sans-serif;resize: both;}
+div.progress{color:"red";}
+
+div.location{margin-left: 400px;font-family: 'Arsenal', sans-serif;resize: both;}
+div.newaircraft{margin-left: 400px;font-family: 'Arsenal', sans-serif;resize: both;}
+div.schedule{margin-left: 300px;font-family: 'Arsenal', sans-serif;resize: both;}
+#op{background: #1c0610; color: white;}
+div.operator{margin-left: 300px;font-family: 'Arsenal', sans-serif;resize: both;font-size: 13px;}
+#arrival{height: 150px;width: 150px;margin-left: 800px;margin-top: 60px;}
+#departure{height: 150px;width: 150px;margin-left: 500px;margin-top: -175px;border-radius: 20px;}
+#sch{margin-left: 300px;margin-top: 50px;text-decoration: underline;font-family: 'Arsenal', sans-serif;resize: both;}
+#det{margin-left:120px;font-family: 'Arsenal', sans-serif;
+resize: both;text-align: center;font-size: 20px;color:darkblue; }
+div.data{margin-left: 220px;margin-top: 20px; font-size: 10px; font-weight: bold; color: #04275e; font-family: 'Aldrich', sans-serif}
+#welcome_home{font-family:'Voltaire', sans-serif;font-size: 20px;color: black;}
+#welcome_list{font-family:'Voltaire', sans-serif;font-size: 20px;color: black;}
+#welcome_li1:hover{color: #260142}
+#welcome_li2:hover{color: #910ba0}
+#welcome_li3:hover{color: #6b0732}
+#welcome_li4:hover{color: #1f347f}
+#welcome_li5:hover{color: #c643f2}
+#one{font-size: 20px;background-color: #2b0554;#2b0554;color: lightgrey;font-family: 'Unica One', cursive;padding:5px;}
+#two{font-size: 20px;background-color: #2b0554;#2b0554;color: lightgrey;font-family: 'Unica One', cursive;padding: 2px;}
+#three{font-size: 20px;background-color: #2b0554;color: lightgrey;font-family: 'Unica One', cursive;padding:5px;}
+#four{font-size: 20px;background-color: #2b0554;#2b0554;color: lightgrey;font-family: 'Unica One', cursive;padding:5px;}
+#five{font-size: 15px;color:#6a9319;}
+#six{font-size: 15px;color:#178dd6}
+#seven{font-size: 15px;color:#e5094b;}
+#eight{font-size: 15px;color:#af550c;}
+#arrivalh{color:darkblue;text-align: left; }
+#departureh{color:#64027f;text-align: left;}
+div.display_Arrivaldata{margin-left: 300px;margin-top: 50px;  color:black; font-family: 'Aldrich', sans-serif;text-align: center;font-size: 2px;font-size: 20px;}

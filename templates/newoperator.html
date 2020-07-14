@@ -1,0 +1,212 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+
+<title>NEW OPERATOR</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+
+    <ul>
+      <li><a  href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a class='active' href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a  href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+
+
+</ul>
+
+<div class="operator">
+{% if user.is_authenticated %}
+  <form class="Opentries" action="{% url 'ATC:new_operator' %}" method="post">
+    {% csrf_token %}
+    <br>
+<h3 id="AThead"><b>NEW OPERATOR</b></h3>
+
+<label for="opcode1"><span style="color:red">*</span>Operator Code :</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Operator_Code}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="opcname"><span style="color:red">*</span>Operator Name :</label>
+        &nbsp;&nbsp;&nbsp;
+        {{ form.Operator_Name}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="phone">Phone :</label>
+  &nbsp;&nbsp;&nbsp;
+ {{ form.Phone}}
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <label for="email">E-Mail :</label>
+ &nbsp;&nbsp;&nbsp;
+{{ form.Email}}<br>
+<label for="categ"><span style="color:red">*</span>Category:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Category }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="ff"><span style="color:red">*</span>Free Facility:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Free_Facility }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="ot">Operator Type:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Operator_Type }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label id="roff"for="ff"><span title="Raise Over Fly">ROF:</span></label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.ROF }}
+<br>
+<br>
+<label for="sd">Security Deposit:</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Security_Deposit }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="credf"><span style="color:red">*</span>Credit Facility :</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{ form.Credit_Facility }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="pan">PAN No:</label>
+      &nbsp;&nbsp;
+      {{ form.PAN_Number }}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="tan">TAN No:</label>
+      &nbsp;
+      {{ form.TAN_Number }}
+      <br>
+      <label id="agcc"for="agc"><span style="color:red">*</span><span title="Account Group Category">AGC:</span></label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          {{ form.AGC }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="sched"><span style="color:red">*</span>Scheduled:</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      {{ form.Scheduled }}
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="strn">Service Tax Reg. No:</label>
+      &nbsp;
+      {{ form.Service_Tax_Reg_No }}
+      <br>
+      <label for="cc">Counter Category:</label>
+          &nbsp;
+          {{ form.Counter_Category }}
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="noc">No of Counter alloted:</label>
+  &nbsp;
+  {{ form.No_of_Counter_Alloted }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="nooc">No of Own Counters:</label>
+  &nbsp;
+  {{ form.No_of_Own_Counter }}
+  <br><br>
+  <label for="xray">Use of AAI X-RAY</label>&nbsp;&nbsp;
+  {{ form.Use_of_AAI_XRAY }}
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="cc">Use of Common Counter</label>&nbsp;&nbsp;
+  {{ form.Use_of_Common_Counter }}
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="house">Use of AAI Housing</label>&nbsp;&nbsp;
+  {{ form.Use_of_AAI_Housing }}
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="cbsn">Common Billing for Schedule/Non-Schedule</label>&nbsp;&nbsp;
+  {{ form.Common_Billing_For_SN }}
+  <br>
+
+  <label for="parking">Use of AAI Parking</label>&nbsp;&nbsp;
+  {{ form.Use_of_AAI_Parking }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="ab">Aero Bridge</label>&nbsp;&nbsp;
+  {{ form.Aero_Bridge }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="psf">Include PSF in charge Bill</label>&nbsp;&nbsp;
+  {{ form.Include_PSF_in_charge_Bill }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="csaa">Common Charges for All Aircrafts</label>&nbsp;&nbsp;
+  {{ form.Common_Charges_for_All_Aircrafts }}
+  <br>
+  <label for="psfd">Applicable for PSF Discount</label>&nbsp;&nbsp;
+  {{ form.Applicable_for_PSF_Discount }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="udf">Applicable for UDF Discount</label>&nbsp;&nbsp;
+  {{ form.Applicable_for_UDF_Discount }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="alift">Use Ambulift</label>&nbsp;&nbsp;
+  {{ form.Use_Ambulift }}
+  <br>
+  <label for="address"><span style="color:red">*</span>Address:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+  <label for="mcc"></span>Monthly CC Category:</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      {{ form.Monthly_CC_Category }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <label for="fax">Fax No:</label>
+      &nbsp;
+      {{ form.FAX_NO }}
+  <br>
+{{ form.Address }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="contactp">Contact Person:</label>
+&nbsp;
+{{ form.Contact_Person }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="gsa">GSA Details:</label>
+&nbsp;
+{{ form.GSA_Details }}
+<br>
+  <input type="submit" name="sub" value="SAVE" class="btn btn-success" onclick='alertt()'>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning"><a href="http://127.0.0.1:8000/admin/ATC/newwoperatormodel/"style="color:white">Search</a></button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger"><a href="{% url 'ATC:new_operator' %}" style="color:white">RESET<a/></button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15% ">
+  <br>
+      <p> Step 1 Complete</p>
+    </div>
+</div>
+<script>
+function alertt() {
+  alert("DATA ADDED SUCCESFULLY TO DATABASE ")
+}
+</script>
+{% endif %}
+  </body>
+</html>

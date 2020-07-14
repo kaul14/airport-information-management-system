@@ -1,0 +1,247 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+
+<title>NEW OPERATOR</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login_page' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+
+    <ul>
+      <li><a  href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a class='active' href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a  href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+
+
+</ul>
+
+<div class="operator">
+
+  <form class="Opentries" action="index.html" method="post">
+    <br>
+<h3 id="AThead"><b>NEW OPERATOR</b></h3>
+
+<label for="opcode1"><span style="color:red">*</span>Operator Code :</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" name="opcode1"style="width:120px;"required>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="opcname"><span style="color:red">*</span>Operator Name :</label>
+        &nbsp;&nbsp;&nbsp;
+        <input type="text" name="opname"style="width:140px;"required>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="phone">Phone :</label>
+  &nbsp;&nbsp;&nbsp;
+ <input type="number" name="phone"style="width:140px;">
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <label for="email">E-Mail :</label>
+ &nbsp;&nbsp;&nbsp;
+<input type="email" name="email"style="width:140px;">
+<br>
+<label for="categ"><span style="color:red">*</span>Category:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="categ"style="width:120px;" required>
+  <option value="null">[select one]</option>
+<option value=""></option>
+<option value=""></option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="ff"><span style="color:red">*</span>Free Facility:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="ff"style="width:140px;"required>
+  <option value="null">[select one]</option>
+<option value="yes">YES</option>
+<option value="no">NO</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="ot">Operator Type:</label>
+&nbsp;
+<select name="ot"style="width:120px;">
+  <option value="national">National</option>
+<option value="international">International</option>
+<option value="local">Local</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label id="roff"for="ff"><span title="Raise Over Fly">ROF:</span></label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="rof"style="width:140px;"required>
+  <option value="null">[select one]</option>
+<option value="yes">YES</option>
+<option value="no">NO</option>
+</select>
+<br>
+<label for="oc">Operator Class:</label>&nbsp;&nbsp;&nbsp;
+<input type="radio" name="oc" value="Airlines">&nbsp;&nbsp;Airline
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="oc" value="ATO">&nbsp;&nbsp;ATO
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="oc" value="SmallOperator">&nbsp;&nbsp;Small Operator
+&nbsp;&nbsp;&nbsp;&nbsp;
+<input type="radio" name="oc" value="FlyingClub">&nbsp;&nbsp;Flying Club
+&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<label for="sd">Security Deposit:</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="number" name="sd"style="width:120px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="credf"><span style="color:red">*</span>Credit Facility :</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <select name="credf"style="width:140px;"required>
+          <option value="null">[select one]</option>
+        <option value="yes">YES</option>
+        <option value="no">NO</option>
+        </select>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="pan">PAN No:</label>
+      &nbsp;&nbsp;
+      <input type="text" name="pan"style="width:140px;">
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="tan">TAN No:</label>
+      &nbsp;
+      <input type="text" name="tan"style="width:140px;">
+      <br>
+      <label id="agcc"for="agc"><span style="color:red">*</span><span title="Account Group Category">AGC:</span></label>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <select name="agc"style="width:140px;"required>
+            <option value="null">[select one]</option>
+          <option value="yes">YES</option>
+          <option value="no">NO</option>
+          </select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="sched"><span style="color:red">*</span>Scheduled:</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <select name="sched"style="width:140px;"required>
+        <option value="null">[select one]</option>
+      <option value="yes">YES</option>
+      <option value="no">NO</option>
+      </select>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="strn">Service Tax Reg. No:</label>
+      &nbsp;
+      <input type="text" name="strn"style="width:140px;">
+      <br>
+      <label for="cc">Counter Category:</label>
+          &nbsp;
+          <select name="agc"style="width:140px;">
+            <option value="null">[select one]</option>
+          <option value="yes">YES</option>
+          <option value="no">NO</option>
+          </select>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="noc">No of Counter alloted:</label>
+  &nbsp;
+  <input type="number" name="noc"style="width:140px;">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="nooc">No of Own Counters:</label>
+  &nbsp;
+  <input type="number" name="nooc"style="width:140px;" value="0">
+  <br>
+  <label for="xray">Use of AAI X-RAY</label>&nbsp;&nbsp;
+  <input type="checkbox" name="xray" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="cc">Use of Common Counter</label>&nbsp;&nbsp;
+  <input type="checkbox" name="cc" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="house">Use of AAI Housing</label>&nbsp;&nbsp;
+  <input type="checkbox" name="house" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="cbsn">Common Billing for Schedule/Non-Schedule</label>&nbsp;&nbsp;
+  <input type="checkbox" name="cbsn" value="yes">
+  <br>
+
+  <label for="parking">Use of AAI Parking</label>&nbsp;&nbsp;
+  <input type="checkbox" name="parking" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="ab">Aero Bridge</label>&nbsp;&nbsp;
+  <input type="checkbox" name="ab" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="psf">Include PSF in charge Bill</label>&nbsp;&nbsp;
+  <input type="checkbox" name="psf" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="csaa">Common Charges for All Aircrafts</label>&nbsp;&nbsp;
+  <input type="checkbox" name="csaa" value="yes">
+  <br>
+  <label for="psfd">Applicable for PSF Discount</label>&nbsp;&nbsp;
+  <input type="checkbox" name="psfd" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="udf">Applicable for UDF Discount</label>&nbsp;&nbsp;
+  <input type="checkbox" name="udf" value="yes">
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="alift">Use Ambulift</label>&nbsp;&nbsp;
+  <input type="checkbox" name="alift" value="yes">
+  <br>
+  <label for="address"><span style="color:red">*</span>Address:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+  <label for="mcc"></span>Monthly CC Category:</label>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <select name="mcc"style="width:140px;"required>
+        <option value="null">[select one]</option>
+      <option value="yes">YES</option>
+      <option value="no">NO</option>
+      </select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+      <label for="fax">Fax No:</label>
+      &nbsp;
+      <input type="text" name="fax"style="width:140px;">
+  <br>
+<textarea name="address" rows="2" cols=50 required></textarea>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;
+
+<label for="contactp">Contact Person:</label>
+&nbsp;
+<input type="text" name="contactp"style="width:140px;">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="gsa">GSA Details:</label>
+&nbsp;
+<input type="text" name="gsa"style="width:140px;">
+<br>
+  <button type="submit" class="btn btn-success">SAVE</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning">Search</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger">RESET</button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" style="width: 15% ">
+  <br>
+      <p> Step 1 Complete</p>
+    </div>
+</div>
+  </body>
+</html>

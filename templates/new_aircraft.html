@@ -1,0 +1,140 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+<title>ADD NEW AIRCRAFT</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+<!--MENU><-->
+    <ul>
+      <li><a  href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a class='active' href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+
+</ul>
+
+<div class="newaircraft">
+{% if user.is_authenticated %}
+  <form class="ATentries" action="{% url 'ATC:aircraft_new'%}" method="post">
+    {% csrf_token %}
+    <br>
+<h3 id="NAircrafthead"><b>ADD NEW AIRCRAFT</b></h3>
+
+  <label for="regno"><span style="color:red">*</span>Registration No:</label>
+  &nbsp;&nbsp;
+  {{ form.Registration_Number }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="maxw"><span style="color:red">*</span> Max Weight:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Max_Weight }}
+<br>
+  <label for="airtype"><span style="color:red">*</span>Aircraft Type:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Aircraft_Type }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="regtype"><span style="color:red">*</span>Registration Type:</label>
+  &nbsp;&nbsp;
+  {{ form.Registration_Type }}
+<br>
+  <label for="opcode"><span style="color:red">*</span>Operator code:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Operator_Code }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="scap"><span style="color:red">*</span>Seating Capacity:</label>
+&nbsp;&nbsp;&nbsp;
+{{ form.Seating_capacity }}
+<br>
+  &nbsp;&nbsp;<label for="lcn">LCN:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.LCN }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="height">Height:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Height }}
+<br>
+&nbsp;<label for="on">Owner name:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Owner_Name }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="lf">Leased from :</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Leased_From }}
+<br>
+&nbsp;<label for="vf">Valid From:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Valid_From }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="vt">Valid Till:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Valid_Till }}
+<br>
+<label for="refno"><span style="color:red">*</span>Reference No:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.Reference_Number }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="upfile">Upload File:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{ form.File_Upload }}
+<br>
+&nbsp;&nbsp;<label for="remarkss">Remarks:</label>
+  <br>
+  {{ form.Remarks }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="cargo">Cargo Flight:</label>
+  {{ form.Cargo }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="supersonic">Supersonic:</label>
+  {{ form.Supersonic }}
+
+<br>
+  <input type="submit" name="sub" value="SAVE" class="btn btn-success" onclick='alertt()'>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning"><a href="http://127.0.0.1:8000/admin/ATC/newaircraftmodel/"style="color:white">Search</a></button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger"><a href="{% url 'ATC:aircraft_new' %}" style="color:white">RESET<a/></button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 55% ">
+  <br>
+      <p> Step 4 Complete</p>
+    </div>
+    <script>
+    function alertt() {
+      alert("DATA ADDED SUCCESFULLY TO DATABASE ")
+    }
+    </script>
+{% endif %}
+  </body>
+</html>

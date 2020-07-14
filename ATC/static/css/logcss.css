@@ -1,0 +1,33 @@
+#AAI{height: 100px;
+width:200px;
+margin-left: -19px;
+margin-top:-20px;
+border:black solid 1px;
+resize: both;
+}
+
+#welcome{font-style: normal;font-family: 'Cinzel', serif;, cursive;color:white;
+font-weight: bold;
+margin-top:-70px;margin-left: 250px;resize: both;
+}
+
+div.headerr{background:#014296;
+padding: 20px;
+height: 100px;
+margin-top:auto;
+resize: both;}
+
+#login{color:"green";}
+
+
+#dt{font-family: 'IM Fell English SC', serif;font-size: 18px;opacity: 0.4px;resize: both;}
+
+div.log{background:#8590e5;opacity: 0.6px;border-radius: 20px;text-align: center;
+  font-family: 'Cabin Sketch';
+  height: 400px;width: 400px;margin-top: 15px;resize: both;}
+
+#pass:hover{border: black solid 1px; background: lightgrey;resize: both;}
+#id:hover{border: black solid 1px; background: lightgrey;resize: both;}
+div.air{margin-left: 620px;margin-top: -420px;resize: both;}
+#airport{height:400px;width: 600px;opacity: 0.8px;resize: both;}
+/*div.headerr:hover{background-color: blue; font-style: italic;}*/

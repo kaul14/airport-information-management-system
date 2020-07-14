@@ -1,0 +1,158 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+<title>SCHEDULE DEPARTURE</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login_page' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+
+    <ul>
+      <li><a href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a  href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a class="active" href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+
+</ul>
+
+<div class="schedule">
+
+  <form class="Sentries" action="index.html" method="post">
+    <br>
+<h3 id="AThead"><b>SCHEDULE FLIGHT [NEW DEPARTURE]</b></h3>
+  <br>
+  <label for="airtype"><span style="color:red">*</span>Nature of Flight:</label>
+  &nbsp;&nbsp;&nbsp;
+  <select name="airtype" required>
+    <option value="null">[select one]</option>
+  <option value=""></option>
+<option value=""></option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="sc"><span style="color:red">*</span>Schedule Category:</label>
+&nbsp;&nbsp;
+<select name="sc" required>
+  <option value="null">[select one]</option>
+<option value=""></option>
+<option value=""></option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="schtype"><span style="color:red">*</span>Schedule Type:</label>
+&nbsp;&nbsp;
+<select name="schtype" required>
+  <option value="null">[select one]</option>
+<option value=""></option>
+<option value=""></option>
+</select>
+<br>
+<label for="airtype"><span style="color:red">*</span>Aircraft Type:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <select name="airtype" required style="width:120px;">
+    <option value="AirbusA320">Airbus A320</option>
+  <option value="Boeing737-800">Boeing 737-800</option>
+  <option value="AirbusA321">Airbus A321</option>
+  <option value="AirbusA319">Airbus A319</option>
+  <option value="Boeing777-300ER">Boeing 777-300ER</option>
+  </select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="rcs"></span>RCS Flight:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <select name="rcs">
+    <option value="null">[select one]</option>
+  <option value="yes">YES</option>
+  <option value="no">NO</option>
+  </select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="vf"><span style="color:red">*</span>Valid From:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="date" name="vf" value=""required>
+  <br>
+
+<label for="flightno"><span style="color:red">*</span>Flight No:</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="text" name="flightno" style="width:120px;"required>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="opcodee"><span style="color:red">*</span>Operator Code:</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="text" name="opcodee"style="width:120px;"required>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="vt"><span style="color:red">*</span>Valid Till:</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="date" name="vt" value=""required>
+<br><br>
+    <h5 id="op">OPERATIONS</h5>
+    <label for="arrival"><span style="color:red">*</span>Arrival Location:</label>
+        &nbsp;
+        <input type="text" name="arrival" style="width:120px;" required>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="scht"><span style="color:red">*</span>Scheduled Time (IST):</label>
+            &nbsp;&nbsp;
+            <input type="time" name="scht"style="width:120px;" required>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="route"><span style="color:red">*</span>Route:</label>
+        &nbsp;
+        <input type="text" name="route" style="width:120px;" required>
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="daily">Daily</label>&nbsp;&nbsp;
+    <label for="mon">Mon</label>&nbsp;&nbsp;
+    <label for="tue">Tue</label>&nbsp;&nbsp;
+    <label for="wed">Wed</label>&nbsp;&nbsp;
+    <label for="thu">Thu</label>&nbsp;&nbsp;
+    <label for="fri">Fri</label>&nbsp;&nbsp;
+    <label for="sat">Sat</label>&nbsp;&nbsp;
+    <label for="sun">Sun</label>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="daily" value="daily">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="mon" value="monday">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="tue" value="tuesday">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="wed" value="wednesday">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="thu" value="thursday">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="fri" value="friday">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="sat" value="saturday">&nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" name="sun" value="sunday">
+
+<br><br>
+
+  <button type="button" class="btn btn-success">SAVE</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning">Search</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger">RESET</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="{% url 'ATC:schedule_arrival' %}"><button type="button" class="btn btn-primary">ARRIVAL-></button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80% ">
+<br>
+      <p> Step 5 Complete</p>
+    </div>
+
+</form>
+
+</div>
+  </body>
+</html>

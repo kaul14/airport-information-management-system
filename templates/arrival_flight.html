@@ -1,0 +1,150 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+  <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+<title>SCHEDULE ARRIVAL</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+
+    <ul>
+      <li><a  href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a  href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a class ="active" href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+
+</ul>
+
+<div class="schedule">
+{% if user.is_authenticated %}
+  <form class="Sentries" action="{% url 'ATC:schedule_arrival' %}" method="post">
+    {% csrf_token %}
+    <br>
+<h3 id="AThead"><b>SCHEDULE FLIGHT [NEW ARRIVAL]</b></h3>
+  <br>
+  <label for="airtype"><span style="color:red">*</span>Nature of Flight:</label>
+  &nbsp;&nbsp;&nbsp;
+  {{form.Nature_Of_Flight}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="sc"><span style="color:red">*</span>Schedule Category:</label>
+&nbsp;&nbsp;
+{{form.Schedule_Category}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="schtype"><span style="color:red">*</span>Schedule Type:</label>
+&nbsp;&nbsp;
+{{form.Schedule_Type}}
+<br>
+<label for="airtype"><span style="color:red">*</span>Aircraft Type:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{form.Aircraft_Type}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="rcs"></span>RCS Flight:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{form.RCS_Flight}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="vf"><span style="color:red">*</span>Valid From:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+{{form.Valid_From}}
+  <br>
+
+<label for="flightno"><span style="color:red">*</span>Flight No:</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{form.Flight_Number}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="opcodee"><span style="color:red">*</span>Operator Code:</label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        {{form.Operator_Code}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="vt"><span style="color:red">*</span>Valid Till:</label>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{form.Valid_Till}}
+<br><br>
+    <h5 id="op">OPERATIONS</h5>
+    <label for="depart"><span style="color:red">*</span>Departure Location:</label>
+        &nbsp;
+        {{form.Departure_Location}}
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <label for="scht"><span style="color:red">*</span>Scheduled Time (IST):</label>
+            &nbsp;&nbsp;
+            {{form.Scheduled_Time}}
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <label for="route"><span style="color:red">*</span>Route:</label>
+        &nbsp;
+        {{form.Route}}
+<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <label for="mon">Mon</label>&nbsp;&nbsp;
+    <label for="tue">Tue</label>&nbsp;&nbsp;
+    <label for="wed">Wed</label>&nbsp;&nbsp;
+    <label for="thu">Thu</label>&nbsp;&nbsp;
+    <label for="fri">Fri</label>&nbsp;&nbsp;
+    <label for="sat">Sat</label>&nbsp;&nbsp;
+    <label for="sun">Sun</label>
+    <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+    {{ form.Mon}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Tue}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Wed}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Thu}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Fri}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Sat}}&nbsp;&nbsp;&nbsp;&nbsp;
+    {{ form.Sun}}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="status" style="color:purple"><span style="color:red">*</span>STATUS:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+{{form.Flight_Status}}
+<br><br>
+
+<br><br>
+
+  <input type="submit" name="sub" value="SAVE" class="btn btn-success" onclick='alertt()'>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning"><a href="http://127.0.0.1:8000/admin/ATC/newarrivalmodel/"style="color:white">Search</a></button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger"><a href="{% url 'ATC:schedule_arrival' %}" style="color:white">RESET<a/></button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="{% url 'ATC:schedule_departure' %}"><button type="button" class="btn btn-primary">DEPARTURE-></button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80% ">
+<br>
+      <p> Step 5 Complete</p>
+    </div>
+{% endif %}
+</form>
+<script>
+function alertt() {
+  alert("DATA ADDED SUCCESFULLY TO DATABASE ")
+}
+</script>
+
+</div>
+  </body>
+</html>

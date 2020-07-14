@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/logcss.css'%}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg'%}" rel="shortcut icon">
+<title>WELCOME TO AAI AIMS</title>
+  </head>
+<body>
+  <!-- TOP IMAGE AND HEAD-->
+<div class="headerr">
+<a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg'%}" alt="image not found"></a>
+  <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+</div>
+<marquee dir="right" bgcolor="#47b5ff" behavior="slide"><p id="dt"></p></marquee>
+
+<!-- LOGIN-->
+<div class="container">
+  <div class="log">
+
+    <form  method="post" >
+      {% csrf_token %}
+    <p><b>ENTER LOGIN DETAILS</b> </p>
+    {{ form.as_p }}
+    <br><br>
+
+    {% if form.errors %}
+<p style="color:#FF0000"; >Your USERNAME and PASSWORD didn't match. Please try again.</p>
+{% endif %}
+
+    <input type="submit"  value="LOGIN">
+  </form>
+</div>
+</div>
+<div class="air">
+  <img src="{% static 'images/airport.JPG'%}" alt="image not available" id="airport">
+
+</div>
+<script type="text/javascript">
+  alert("This is a Restricted Website, please click OK to continue")
+  var d = new Date();
+document.getElementById("dt").innerHTML = d;
+</script>
+</body>
+
+  <center><details>
+    <summary>© Copyright 2018.</summary>
+    <p> - by TEAM <strong>Bhaviya|Devansh|Manpreet|Prashant|Sanya </strong>. All Rights Reserved.</p>
+    <p>All content and graphics on this web site are the property of the Airports Authority of India.</p>
+  </details></center>
+</html>

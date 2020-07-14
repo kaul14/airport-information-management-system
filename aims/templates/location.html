@@ -1,0 +1,136 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+<title>MAIN MENU</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login_page' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+
+    <ul>
+      <li><a  href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a class='active' href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a  href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+
+
+</ul>
+
+<div class="location">
+
+  <form class="ATentries" action="index.html" method="post">
+    <br>
+<h3 id="NLhead"><b>NEW LOCATION</b></h3>
+  <br>
+  <label for="loccode"><span style="color:red">*</span>Location Code:</label>
+  &nbsp;&nbsp;&nbsp;
+  <input type="text" name="loccode" required>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="loctype">Location Type:</label>
+  &nbsp;&nbsp;
+  <select name="loctype">
+  <option value="National">National</option>
+  <option value="International">International</option>
+  <option value="Defense">Defense</option>
+</select>
+  <br>
+
+  <label for="locname"><span style="color:red">*</span>Location Name:</label>
+  &nbsp;&nbsp;
+  <input type="text" name="locname" required>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="iata">IATA Code:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" name="iata" required>
+<br>
+  <label for="atype"><span style="color:red">*</span>Airport Type:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <select name="atype" required>
+    <option value="International">International</option>
+  <option value="National">National</option>
+  <option value="Defense">Defense</option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="division">Division:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <select name="atype" required>
+    <option value="International">[Select one]</option>
+  <option value=></option>
+  <option value=></option>
+</select>
+<br>
+  <label for="reg"><span style="color:red">*</span>Region:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <select name="reg" required>
+    <option value="International">[Select one]</option>
+  <option value=></option>
+  <option value=></option>
+</select>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<label for="status"><span style="color:red">*</span>Status:</label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<select name="status" required>
+  <option value="International">[Select one]</option>
+<option value="Available">Available</option>
+<option value="Unavailable">Unavailable</option>
+</select>
+<br><br>
+  <label for="ils">ILS</label>
+  <input type="checkbox" name="ils">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="discount">TNLC Discount</label>
+  <input type="checkbox" name="discount">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="uncontrolled">Uncontrolled</label>
+  <input type="checkbox" name="uncontrolled">
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="pcm">PCM Seg. through Arrival and Departures</label>
+  <input type="checkbox" name="pcm">
+  <br>
+
+  <label for="address">Address:</label>
+  <br>
+  <textarea name="address" rows="2" cols=50></textarea>
+<br><br>
+  <button type="button" class="btn btn-success">SAVE</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning">Search</button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger">RESET</button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 43% ">
+<br>
+      <p> Step 3 Complete</p>
+    </div>
+
+</form>
+
+</div>
+  </body>
+
+</html>

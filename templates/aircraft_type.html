@@ -1,0 +1,108 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="description" content="Airport Information management system">
+  <meta name="keywords" content="aiport,flights,schedule,AIMS">
+  <meta name="author" content="Bhaviya batra">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/menucs.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet">
+    <link href="{% static 'images/plane.jpg' %}" rel="shortcut icon">
+<title>Aircraft Type New</title>
+  </head>
+  <body>
+    <div class="headerr">
+      <a href="https://www.aai.aero"> <img id="AAI" src="{% static 'images/aai.jpg' %}" alt="image not found"></a>
+        <h1 id="welcome">AIRPORT INFORMATION MANAGEMENT SYSTEM</h1>
+        <a href="{% url 'ATC:login' %}"><input type="image" src="{% static 'images/logout.png' %}" name="logout" height="20px" id="log"></a>
+
+    </div>
+
+    <ul>
+      <li><a  href="{% url 'ATC:home_page' %}">Home</a></li>
+      <li><a href="{% url 'ATC:new_operator' %}"> ADD NEW OPERATOR</a></li>
+      <li><a class='active' href="{% url 'ATC:aircraft_type' %}">ADD AIRCRAFT TYPE</a></li>
+      <li><a href="{% url 'ATC:location' %}">ADD LOCATION</a></li>
+      <li><a  href="{% url 'ATC:aircraft_new' %}">ADD NEW AIRCRAFT</a></li>
+      <li><a  href="{% url 'ATC:schedule_flight' %}"> SCHEDULE FLIGHT</a></li>
+      <li><a href="{% url 'ATC:display' %}">DISPLAY SCHEDULE</a></li>
+</ul>
+
+<div class="airtype">
+{% if user.is_authenticated %}
+  <form class="ATentries" action="{% url 'ATC:aircraft_type'%}" method="post">
+    {% csrf_token %}
+
+    <br>
+<h3 id="AThead"><b>NEW AIRCRAFT TYPE</b></h3>
+  <br>
+  <label for="type"><span style="color:red">*</span>Type Indentifier:</label>
+  &nbsp;
+  {{ form.Type_Indentifier }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="sname">Short Name:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Short_Name }}
+  <br>
+
+  <label for="lname"><span style="color:red">*</span>Long Name:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Long_Name }}
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <label for="seatc"><span style="color:red">*</span>Seating Capacity:</label>
+  &nbsp;&nbsp;
+  {{ form.Seating_Capacity }}
+<br>
+  <label for="mweight"><span style="color:red">*</span>Max Weight:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Max_Weight }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="wspan">Wing Span:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Wing_Span }}
+<br>
+  <label for="gspan">Gear Span:</label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  {{ form.Gear_Span }}
+<br>
+  <label for="helicopter">Helicopter</label>
+  {{ form.helicopter }}
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <label for="ss">Supersonic</label>
+  {{ form.supersonic }}
+  <br>
+
+  <label for="Remarks">Remarks:</label>
+  <br>
+  {{ form.Remarks }}
+<br><br>
+  <input type="submit" name="sub" value="SAVE" class="btn btn-success" onclick='alertt()'>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-warning"><a href="http://127.0.0.1:8000/admin/ATC/aircrafttypemodel/"style="color:white">Search</a></button>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <button type="button" class="btn btn-danger"> <a href="{% url 'ATC:aircraft_type' %}" style="color:white">RESET<a/></button>
+  <br><br>
+  <div class="progress">
+  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 30% ">
+<br>
+      <p> Step 2 Complete</p>
+    </div>
+
+</form>
+{% endif %}
+</div>
+<script>
+function alertt() {
+  alert("DATA ADDED SUCCESFULLY TO DATABASE ")
+}
+</script>
+  </body>
+</html>
